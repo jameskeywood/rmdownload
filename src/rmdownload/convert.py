@@ -2,7 +2,8 @@
 
 data/files_pdf mirrors data/files exactly, with a PDF added next to each
 notebook bundle.  Each notebook's pages are read with rmscene, converted to
-SVG with rmc's exporter, and drawn into a single PDF with svglib/reportlab.
+SVG with rmc's exporter (patched in render.py for svglib compatibility), and
+drawn into a single PDF with svglib/reportlab.
 """
 
 import io
@@ -12,11 +13,11 @@ from pathlib import Path
 
 from reportlab.graphics import renderPDF
 from reportlab.pdfgen import canvas
-from rmc.exporters.svg import tree_to_svg
 from rmscene import read_tree
 from svglib.svglib import svg2rlg
 
 from .paths import FILES, FILES_PDF
+from .render import tree_to_svg
 
 
 def render_notebook(bundle: Path) -> None:
