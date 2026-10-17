@@ -1,5 +1,5 @@
 {
-  description = "Python 3 development environment";
+  description = "rmdownload: download reMarkable 2 files and convert notebooks to PDF";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -9,8 +9,11 @@
       pkgs = import nixpkgs { inherit system; };
     in {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          pkgs.python3
+        packages = with pkgs; [
+          uv
+          python3
+          rsync
+          openssh
         ];
       };
     };

@@ -1,0 +1,19 @@
+[project]
+name = "rmdownload"
+version = "0.1.0"
+description = "Download files from reMarkable 2 paper tablet."
+requires-python = ">=3.11"
+dependencies = [
+	"rmc",
+	"svglib",
+]
+
+[tool.uv.sources]
+rmc = { git = "https://github.com/ricklupton/rmc" }
+
+[project.scripts]
+rmdownload = "rmdownload.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
